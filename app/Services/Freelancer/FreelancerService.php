@@ -2,8 +2,9 @@
 
 namespace App\Services\Freelancer;
 
+use App\Enums\FreelancerStatusEnum;
 use App\Repositories\Freelancer\FreelancerRepositoryInterface;
-use App\Services\Freelancer\DTO\ListAvailableOutputDTO;
+use App\Services\Freelancer\DTO\FreelancerListOutputDTO;
 
 class FreelancerService implements FreelancerServiceInterface
 {
@@ -11,8 +12,8 @@ class FreelancerService implements FreelancerServiceInterface
         private FreelancerRepositoryInterface $repository
     ) {}
 
-    public function listAvailable(): ListAvailableOutputDTO
+    public function list(?FreelancerStatusEnum $status = null): FreelancerListOutputDTO
     {
-        return new ListAvailableOutputDTO($this->repository->listAvailable());
+        return new FreelancerListOutputDTO($this->repository->list($status));
     }
 }

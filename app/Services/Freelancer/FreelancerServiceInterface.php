@@ -2,9 +2,10 @@
 
 namespace App\Services\Freelancer;
 
-use App\Services\Freelancer\DTO\ListAvailableOutputDTO;
+use App\Enums\FreelancerStatusEnum;
+use App\Services\Freelancer\DTO\FreelancerListOutputDTO;
 
 interface FreelancerServiceInterface
 {
-    public function listAvailable(): ListAvailableOutputDTO;
+    public function list(?FreelancerStatusEnum $status = null): FreelancerListOutputDTO;
 }

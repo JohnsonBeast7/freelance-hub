@@ -5,14 +5,14 @@ namespace App\Services\Freelancer\DTO;
 use App\Responsers\Freelancer\ListAvailableResponser;
 use Illuminate\Support\Collection;
 
-readonly class ListAvailableOutputDTO
+readonly class FreelancerListOutputDTO
 {
     public function __construct(
-        public Collection $availableFreelancers,
+        public Collection $freelancers,
     ) {}
 
     public function toResponse(): array
     {
-        return new ListAvailableResponser($this->availableFreelancers)->response();
+        return new ListAvailableResponser($this->freelancers)->response();
     }
 }
