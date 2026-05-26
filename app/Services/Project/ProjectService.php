@@ -2,18 +2,17 @@
 
 namespace App\Services\Project;
 
-use App\Enums\FreelancerStatusEnum;
-use App\Repositories\Freelancer\FreelancerRepositoryInterface;
-use App\Services\Freelancer\DTO\FreelancerListOutputDTO;
+use App\Repositories\Project\ProjectRepositoryInterface;
+use App\Services\Project\DTO\ProjectOutputDTO;
 
 class ProjectService implements ProjectServiceInterface
 {
     public function __construct(
-        private FreelancerRepositoryInterface $repository
+        private ProjectRepositoryInterface $repository
     ) {}
 
-    public function list(?FreelancerStatusEnum $status = null): FreelancerListOutputDTO
+    public function getProject(int $projectId): ProjectOutputDTO
     {
-        return new FreelancerListOutputDTO($this->repository->list($status));
+        return new ProjectOutputDTO($this->repository->getProject($projectId));
     }
 }

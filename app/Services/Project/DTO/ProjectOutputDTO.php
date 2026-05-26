@@ -2,17 +2,17 @@
 
 namespace App\Services\Project\DTO;
 
-use App\Responsers\Freelancer\ListAvailableResponser;
-use Illuminate\Support\Collection;
+use App\Models\Project;
+use App\Responsers\Project\GetProjectResponser;
 
 readonly class ProjectOutputDTO
 {
     public function __construct(
-        public Collection $freelancers,
+        public Project $project,
     ) {}
 
     public function toResponse(): array
     {
-        return new ListAvailableResponser($this->freelancers)->response();
+        return new GetProjectResponser($this->project)->response();
     }
 }
